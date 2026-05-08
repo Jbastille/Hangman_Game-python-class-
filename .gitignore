@@ -1,0 +1,14 @@
+
+# Visual Studio junk
+.vs/
+*.user
+*.suo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.env/
