@@ -8,7 +8,7 @@ word_length = len(chosen_word)
 end_of_game = False
 lives = 6
 
-from hangman_art import logo
+from data import hangman_art # change the way way things are imported. 
 from hangman_art import welcome
 print(welcome)
 print(logo)
