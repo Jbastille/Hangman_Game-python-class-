@@ -1,5 +1,5 @@
 import tkinter as tk 
-from tkinter import HORIZONTAL, ttk 
+from tkinter import ttk 
 
 class settingsWindow (tk.Toplevel):
 
@@ -40,15 +40,15 @@ class settingsWindow (tk.Toplevel):
         tk.Label.pack(pady=10)
         tk.Label(self.content , text="Music Settings", fg="white", bg="#2b2b2b")
         tk.Label.pack()
-        tk.Scale(self.content, from_=0, to=100 , orient="HORIZONTAL", command= self.settings.set_sfx_volume)      #slider for music vol
+        tk.Scale(self.content, from_=0, to=100 , orient="horizontal", command= self.settings.set_sfx_volume)      #slider for music vol
         tk.Scale.pack()
         tk.Label(self.content , text="SFX Settings", fg="white", bg="#2b2b2b")
         tk.Label.pack()
-        tk.Scale(self.content, from_=0, to=100 , orient="HORIZONTAL", command= self.settings.set_sfx_volume)     #slider for Sound FX vol
+        tk.Scale(self.content, from_=0, to=100 , orient="horizontal", command= self.settings.set_sfx_volume)     #slider for Sound FX vol
 
     def show_theme_settings(self):
         self.clear_content()
         tk.Label(self.content, text="Theme Settings", fg="white", bg="#2b2b2b", font=("Arial", 16))
         tk.Label.pack(pady=10)
-        tk.Radiobutton(self.content, text="Light Theme", value="light", command= lambda : self settings.apply_theme("light"),bg="#2b2b2b", fg="white", selectcolor="#444")
+        tk.Radiobutton (self.content, text="Light Theme", value="light", command= lambda : self settings.apply_theme("light"),bg="#2b2b2b", fg="white", selectcolor="#444")
         tk.Radiobutton.pack(anchor="w")
