@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk 
 from settings.Themes import themes
 
-class settingsWindow (tk.Toplevel):
+class SettingsWindow (tk.Toplevel):
 
     # this function builds the settings window that come up over the The game UI. 
     def __init__ (self, master, settings_manager):
@@ -37,8 +37,8 @@ class settingsWindow (tk.Toplevel):
 
     def show_audio_settings(self):
         self.clear_content()
-        tk.Label(self.content, text="Audio Settings", fg="white", bg="#2b2b2b", font=("Arial", 16))
-        tk.Label.pack(pady=10)
+        tk.Label(self.content, text="Audio Settings", fg="white", bg="#2b2b2b", font=("Arial", 16)).pack(pady=10)
+
 
         tk.Label(self.content , text="Music Settings", fg="white", bg="#2b2b2b").pack()
         

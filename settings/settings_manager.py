@@ -26,7 +26,7 @@ class SettingsManager:
         self.fullscreen = self.data["fullscreen"]
 
         # Load theme colors from themes.py
-        self.Theme = themes[self.theme_name]
+        self.theme = themes[self.theme_name]
 
     # ---------------------------------------------------------
     # SAVE SETTINGS
