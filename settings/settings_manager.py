@@ -1,74 +1,87 @@
-import tkinter as tk 
-from tkinter import ttk 
+import json
+import os
+from settings.Themes import themes
 
-class settingsWindow (tk.Toplevel):
 
-    # this function builds the settings window that come up over the The game UI. 
-    def __init__ (self, master, settings_manager):
-        super().__init__ (master)
-        self.settings = settings_manager
-        self.title ("Settings")
-        self.geometry("600x400")
-        self.configure(bg="#2b2b2b")
-        self.create_layout  # Calls the function that builds the entire UI layout.
+class SettingsManager:
+    def __init__(self):
+        # Path to config.json inside the settings folder
+        self.config_path = os.path.join(os.path.dirname(__file__), "config.json")
 
-    def create_layout(self):
-        self.sidebar =tk.Frame(self, width = 150, bg = "#1e1e1e")  # this builds the container for widgets 
-        self.sidebar.pack (side= "left", fill="y")
-        self.content = tk.Frame(self, bg = "#2b2b2b")
-        self.content.pack(side = "right", expand = True, fill = "both")  # this makes the setting bar responsive 
+        # Load settings from JSON
+        self.load()
 
-        buttons = [         # each button has ("label", function)
-            ("Audio", self.show_audio_settings),   
-            ("Theme", self.show_theme_settings),
-            ("Display", self.show_display_settings),
-            ("Save", self.show_save_settings)
-        ]
-        for text, command in buttons :    #this loops the list of buttons and creates them. 
-            btn = tk.Button (self.sidebar, text=text, command=command, bg="#333333", fg = "white", relief="flat", height= 2)
-            btn.pack (fill="x", pady= 2)
+    # ---------------------------------------------------------
+    # LOAD SETTINGS
+    # ---------------------------------------------------------
+    def load(self):
+        with open(self.config_path, "r") as f:
+            self.data = json.load(f)
 
-        self.show_audio_settings()
+        # Extract values from JSON
+        self.theme_name = self.data["theme"]
+        self.music_volume = self.data["music_volume"]
+        self.sfx_volume = self.data["sfx_volume"]
+        self.screen_size = self.data["screen_size"]
+        self.fullscreen = self.data["fullscreen"]
 
-    def clear_content(self):   #Removes everything inside the content area, allows switching between panels
-        for widget in self.content.winfo_children():
-            widget.destroy()
+        # Load theme colors from themes.py
+        self.theme = THEMES[self.theme_name]
 
-    def show_audio_settings(self):
-        self.clear_content()
-        tk.Label(self.content, text="Audio Settings", fg="white", bg="#2b2b2b", font=("Arial", 16))
-        tk.Label.pack(pady=10)
-        tk.Label(self.content , text="Music Settings", fg="white", bg="#2b2b2b")
-        tk.Label.pack()
-        tk.Scale(self.content, from_=0, to=100 , orient="horizontal", command= self.settings.set_sfx_volume)      #slider for music vol
-        tk.Scale.pack()
-        tk.Label(self.content , text="SFX Settings", fg="white", bg="#2b2b2b")
-        tk.Label.pack()
-        tk.Scale(self.content, from_=0, to=100 , orient="horizontal", command= self.settings.set_sfx_volume)     #slider for Sound FX vol
+    # ---------------------------------------------------------
+    # SAVE SETTINGS
+    # ---------------------------------------------------------
+    def save(self):
+        with open(self.config_path, "w") as f:
+            json.dump(self.data, f, indent=4)
 
-    def show_theme_settings(self):    # this function will be for the Theme settings
-        self.clear_content()
-        tk.Label(self.content, text="Theme Settings", fg="white", bg="#2b2b2b", font=("Arial", 16))
-        tk.Label.pack(pady=10)
-        tk.Radiobutton (self.content, text="Light Theme", value="light", command= lambda : self.settings.apply_theme("light"),bg="#2b2b2b", fg="white", selectcolor="#444")
-        tk.Radiobutton.pack(anchor="w")
+    # ---------------------------------------------------------
+    # THEME FUNCTIONS
+    # ---------------------------------------------------------
+    def apply_theme(self, theme_name):
+        self.theme_name = theme_name
+        self.data["theme"] = theme_name
+        self.theme = THEMES[theme_name]
 
-    def show_display_settings(self):  # this will be for the screen size and dimensions 
-        self.clear_content()
-        tk.Label(self.content, text="Display Settings", fg="white", bg="#2b2b2b", font=("Arial", 16)).pack(pady=10)
+    def apply_theme_to_window(self, window):
+        window.configure(bg=self.theme["bg"])
 
-        tk.Label(self.content, text="Screen Size", fg="white", bg="#2b2b2b").pack()
-        sizes = ["800x600", "1280x720", "1920x1080"]
-        size_var = tk.StringVar(value=self.settings.screen_size)
+    # ---------------------------------------------------------
+    # VOLUME FUNCTIONS
+    # ---------------------------------------------------------
+    def set_music_volume(self, value):
+        self.music_volume = int(value)
+        self.data["music_volume"] = self.music_volume
 
-        tk.OptionMenu(self.content, size_var, *sizes,command=self.settings.set_screen_size).pack()
+    def set_sfx_volume(self, value):
+        self.sfx_volume = int(value)
+        self.data["sfx_volume"] = self.sfx_volume
 
-        tk.Checkbutton(self.content, text="Fullscreen",command=self.settings.toggle_fullscreen, bg="#2b2b2b", fg="white", selectcolor="#444").pack()
+    # ---------------------------------------------------------
+    # DISPLAY FUNCTIONS
+    # ---------------------------------------------------------
+    def set_screen_size(self, size):
+        self.screen_size = size
+        self.data["screen_size"] = size
 
-    def show_save_settings(self): # this is for the save settings / later in a json format maybe? 
-        self.clear_content()
-        tk.Label(self.content, text="Save Settings", fg="white", bg="#2b2b2b",font=("Arial", 16)).pack(pady=10)
+    def apply_window_size(self, window):
+        window.geometry(self.screen_size)
 
-        tk.Button(self.content, text="Save", command=self.settings.save,bg="#4CAF50", fg="white").pack(pady=10)
+    def toggle_fullscreen(self):
+        self.fullscreen = not self.fullscreen
+        self.data["fullscreen"] = self.fullscreen
 
-        tk.Button(self.content, text="Reset to Default",command=self.settings.reset,bg="#E53935", fg="white").pack(pady=10)
+    # ---------------------------------------------------------
+    # RESET TO DEFAULTS
+    # ---------------------------------------------------------
+    def reset(self):
+        # Reset to default values
+        self.data = {
+            "theme": "dark",
+            "music_volume": 70,
+            "sfx_volume": 70,
+            "screen_size": "1280x720",
+            "fullscreen": False
+        }
+        self.save()
+        self.load()
