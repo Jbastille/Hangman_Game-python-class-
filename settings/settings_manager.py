@@ -26,7 +26,7 @@ class SettingsManager:
         self.fullscreen = self.data["fullscreen"]
 
         # Load theme colors from themes.py
-        self.theme = THEMES[self.theme_name]
+        self.Theme = themes[self.theme_name]
 
     # ---------------------------------------------------------
     # SAVE SETTINGS
@@ -41,7 +41,7 @@ class SettingsManager:
     def apply_theme(self, theme_name):
         self.theme_name = theme_name
         self.data["theme"] = theme_name
-        self.theme = THEMES[theme_name]
+        self.theme = themes[theme_name]
 
     def apply_theme_to_window(self, window):
         window.configure(bg=self.theme["bg"])
