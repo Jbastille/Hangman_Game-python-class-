@@ -46,30 +46,26 @@ class settingsWindow (tk.Toplevel):
         tk.Label.pack()
         tk.Scale(self.content, from_=0, to=100 , orient="horizontal", command= self.settings.set_sfx_volume)     #slider for Sound FX vol
 
-    def show_theme_settings(self):
+    def show_theme_settings(self):    # this function will be for the Theme settings
         self.clear_content()
         tk.Label(self.content, text="Theme Settings", fg="white", bg="#2b2b2b", font=("Arial", 16))
         tk.Label.pack(pady=10)
         tk.Radiobutton (self.content, text="Light Theme", value="light", command= lambda : self.settings.apply_theme("light"),bg="#2b2b2b", fg="white", selectcolor="#444")
         tk.Radiobutton.pack(anchor="w")
 
-     def show_display_settings(self):
+    def show_display_settings(self):  # this will be for the screen size and dimensions 
         self.clear_content()
-        tk.Label(self.content, text="Display Settings", fg="white", bg="#2b2b2b",
-                 font=("Arial", 16)).pack(pady=10)
+        tk.Label(self.content, text="Display Settings", fg="white", bg="#2b2b2b", font=("Arial", 16)).pack(pady=10)
 
         tk.Label(self.content, text="Screen Size", fg="white", bg="#2b2b2b").pack()
         sizes = ["800x600", "1280x720", "1920x1080"]
         size_var = tk.StringVar(value=self.settings.screen_size)
 
-        tk.OptionMenu(self.content, size_var, *sizes,
-                      command=self.settings.set_screen_size).pack()
+        tk.OptionMenu(self.content, size_var, *sizes,command=self.settings.set_screen_size).pack()
 
-        tk.Checkbutton(self.content, text="Fullscreen",
-                       command=self.settings.toggle_fullscreen,
-                       bg="#2b2b2b", fg="white", selectcolor="#444").pack()
+        tk.Checkbutton(self.content, text="Fullscreen",command=self.settings.toggle_fullscreen, bg="#2b2b2b", fg="white", selectcolor="#444").pack()
 
-    def show_save_settings(self):
+    def show_save_settings(self): # this is for the save settings / later in a json format maybe? 
         self.clear_content()
         tk.Label(self.content, text="Save Settings", fg="white", bg="#2b2b2b",font=("Arial", 16)).pack(pady=10)
 
