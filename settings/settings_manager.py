@@ -50,5 +50,29 @@ class settingsWindow (tk.Toplevel):
         self.clear_content()
         tk.Label(self.content, text="Theme Settings", fg="white", bg="#2b2b2b", font=("Arial", 16))
         tk.Label.pack(pady=10)
-        tk.Radiobutton (self.content, text="Light Theme", value="light", command= lambda : self settings.apply_theme("light"),bg="#2b2b2b", fg="white", selectcolor="#444")
+        tk.Radiobutton (self.content, text="Light Theme", value="light", command= lambda : self.settings.apply_theme("light"),bg="#2b2b2b", fg="white", selectcolor="#444")
         tk.Radiobutton.pack(anchor="w")
+
+     def show_display_settings(self):
+        self.clear_content()
+        tk.Label(self.content, text="Display Settings", fg="white", bg="#2b2b2b",
+                 font=("Arial", 16)).pack(pady=10)
+
+        tk.Label(self.content, text="Screen Size", fg="white", bg="#2b2b2b").pack()
+        sizes = ["800x600", "1280x720", "1920x1080"]
+        size_var = tk.StringVar(value=self.settings.screen_size)
+
+        tk.OptionMenu(self.content, size_var, *sizes,
+                      command=self.settings.set_screen_size).pack()
+
+        tk.Checkbutton(self.content, text="Fullscreen",
+                       command=self.settings.toggle_fullscreen,
+                       bg="#2b2b2b", fg="white", selectcolor="#444").pack()
+
+    def show_save_settings(self):
+        self.clear_content()
+        tk.Label(self.content, text="Save Settings", fg="white", bg="#2b2b2b",font=("Arial", 16)).pack(pady=10)
+
+        tk.Button(self.content, text="Save", command=self.settings.save,bg="#4CAF50", fg="white").pack(pady=10)
+
+        tk.Button(self.content, text="Reset to Default",command=self.settings.reset,bg="#E53935", fg="white").pack(pady=10)
