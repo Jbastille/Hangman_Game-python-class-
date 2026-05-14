@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+import pygame
 
 
 class GameWindow(tk.Toplevel):
@@ -10,6 +11,10 @@ class GameWindow(tk.Toplevel):
         self.title("Hangman")
         self.settings.apply_theme_to_window(self)
         self.settings.apply_window_size(self)
+
+        # This will initilize the music
+        pygame.mixer.init()
+        self.play_background_music()
 
         # Word list (you can replace this with a file later)
         self.words = ["python", "hangman", "developer", "project", "settings"]
@@ -24,6 +29,19 @@ class GameWindow(tk.Toplevel):
         self.update_word_display()
         self.update_hangman_display()
 
+
+    # MUSIC Function 
+    def play_background_music(self):
+            try:
+                pygame.mixer.music.load("assets/sounds/after-dark-reflections.mp3")
+                pygame.mixer.music.set_volume(self.settings.music_volume / 100)
+                pygame.mixer.music.play(-1) 
+            except Exception as ex:
+                print("Error loading music:", ex)
+
+    def destroy(self):
+        pygame.mixer.music.stop()
+        super().destroy()
     # ---------------------------------------------------------
     # UI LAYOUT
     # ---------------------------------------------------------
