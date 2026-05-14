@@ -1,4 +1,4 @@
-themes = {
+THEMES = {
             "dark": {
                 "bg": "#2b2b2b",
                 "fg": "white",

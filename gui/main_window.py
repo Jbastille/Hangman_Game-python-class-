@@ -2,7 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 
 from settings.settings_manager import SettingsManager
-from gui.settings_window import settingsWindow
+from gui.settings_window import SettingsWindow
+from gui.game_window import GameWindow
+
 
 
 class MainWindow(tk.Tk):
@@ -64,10 +66,13 @@ class MainWindow(tk.Tk):
         quit_btn.pack(pady=10)
 
     def open_settings(self):
-        settingsWindow(self, self.settings)
+        SettingsWindow(self, self.settings)
 
     def start_game(self):
-        print("Game will start here later!")
+        GameWindow(self, self.settings)
+    
+
+
 
 
 if __name__ == "__main__":

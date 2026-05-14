@@ -1,7 +1,7 @@
 {
-  "theme": "dark",
-  "music_volume": 70,
-  "sfx_volume": 70,
-  "screen_size": "1280x720",
-  "fullscreen": false
+    "theme": "dark",
+    "music_volume": 70,
+    "sfx_volume": 70,
+    "screen_size": "1280x720",
+    "fullscreen": false
 }
