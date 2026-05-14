@@ -1,7 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
 from settings.Themes import THEMES
-
+#______--------____________----------------__________--__________-------------_____________-------------_________
+# using OOP principals and guides from Documentation and Copilot. I will create classes and funtions 
+# that call upon a master injection parameter that allows this to be stored from a database if it stored that way
+# This will allow us to use JSON files for storing data and inject it into out program.
+#___________------------____________--------------________--------------____________-------------------______-----
 
 class SettingsWindow(tk.Toplevel):
 
