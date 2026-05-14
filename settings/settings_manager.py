@@ -1,6 +1,6 @@
 import json
 import os
-from settings.Themes import themes
+from settings.Themes import THEMES
 
 
 class SettingsManager:
