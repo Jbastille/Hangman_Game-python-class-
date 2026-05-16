@@ -8,7 +8,7 @@ class GameWindow(tk.Toplevel):
         super().__init__(master)
 
         self.settings = settings
-        self.title("Hangman")
+        self.title("Hangman Game")
         self.settings.apply_theme_to_window(self)
         self.settings.apply_window_size(self)
 
@@ -90,6 +90,9 @@ class GameWindow(tk.Toplevel):
         # Alphabet buttons
         self.buttons_frame = tk.Frame(self, bg=theme["bg"])
         self.buttons_frame.pack(pady=20)
+        
+        row=0
+        col=0
 
         for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
             btn = tk.Button(
@@ -99,7 +102,11 @@ class GameWindow(tk.Toplevel):
                 command=lambda l=letter: self.play_click_sound(l)
 
             )
-            btn.pack(side="left", padx=2, pady=2)
+            btn.grid(row = row ,column= col, padx=2, pady=2)        #wrap the buttons when the Screen is made smaller.
+            col+=1
+            if col == 9:
+                col=0
+                row+=1
 
 
         # Bottom buttons

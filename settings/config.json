@@ -2,6 +2,6 @@
     "theme": "dark",
     "music_volume": 70,
     "sfx_volume": 70,
-    "screen_size": "1280x720",
+    "screen_size": "600x600",
     "fullscreen": false
 }

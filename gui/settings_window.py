@@ -14,7 +14,7 @@ class SettingsWindow(tk.Toplevel):
         self.settings = settings_manager
 
         self.title("Settings")
-        self.geometry("600x400")
+        self.geometry("400x400")
         self.configure(bg="#2b2b2b")
 
         self.create_layout()
