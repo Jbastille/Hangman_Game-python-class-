@@ -1,5 +1,6 @@
 import json
 import os
+import pygame
 from settings.Themes import THEMES  
 
 
@@ -52,10 +53,22 @@ class SettingsManager:
     def set_music_volume(self, value):
         self.music_volume = int(value)
         self.data["music_volume"] = self.music_volume
+        try:
+            pygame.mixer.music.set_volume(self.music_volume / 70)
+        except :
+            pass
+        
+         
 
     def set_sfx_volume(self, value):
         self.sfx_volume = int(value)
         self.data["sfx_volume"] = self.sfx_volume
+        try:
+            pygame.mixer.Sound.set_volume(self.win_sound, self.sfx_volume / 70)
+            pygame.mixer.Sound.set_volume(self.lose_sound, self.sfx_volume / 70)
+            pygame.mixer.Sound.set_volume(self.click_sound, self.sfx_volume / 70)
+        except:
+            pass
 
     # ---------------------------------------------------------
     # DISPLAY FUNCTIONS

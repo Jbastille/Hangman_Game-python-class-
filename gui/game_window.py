@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+import pygame
 
 
 class GameWindow(tk.Toplevel):
@@ -10,6 +11,14 @@ class GameWindow(tk.Toplevel):
         self.title("Hangman")
         self.settings.apply_theme_to_window(self)
         self.settings.apply_window_size(self)
+
+        # This will initilize the music / sounds effects
+        pygame.mixer.init()
+        self.play_background_music()
+        
+        self.win_sound = pygame.mixer.Sound("assets/sounds/chime_up.wav")
+        self.lose_sound = pygame.mixer.Sound("assets/sounds/whah_whah.wav")
+        self.click_sound = pygame.mixer.Sound("assets/sounds/floop2_x.wav")
 
         # Word list (you can replace this with a file later)
         self.words = ["python", "hangman", "developer", "project", "settings"]
@@ -24,6 +33,24 @@ class GameWindow(tk.Toplevel):
         self.update_word_display()
         self.update_hangman_display()
 
+
+    # MUSIC Function 
+    def play_background_music(self):
+            try:
+                pygame.mixer.music.load("assets/sounds/after-dark-reflections.mp3")
+                pygame.mixer.music.set_volume(self.settings.music_volume / 100)
+                pygame.mixer.music.play(-1) 
+            except Exception as ex:
+                print("Error loading music:", ex)
+
+    def destroy(self):
+        pygame.mixer.music.stop()
+        super().destroy()
+
+    #SOUND EFFECTS FUNCTION
+    def play_click_sound(self, letter):
+        self.click_sound.play()
+        self.guess_letter(letter.lower())
     # ---------------------------------------------------------
     # UI LAYOUT
     # ---------------------------------------------------------
@@ -69,9 +96,11 @@ class GameWindow(tk.Toplevel):
                 self.buttons_frame,
                 text=letter,
                 width=4,
-                command=lambda l=letter: self.guess_letter(l.lower())
+                command=lambda l=letter: self.play_click_sound(l)
+
             )
             btn.pack(side="left", padx=2, pady=2)
+
 
         # Bottom buttons
         bottom = tk.Frame(self, bg=theme["bg"])
@@ -122,15 +151,19 @@ class GameWindow(tk.Toplevel):
             self.update_hangman_display()
 
             if self.lives == 0:
+                self.lose_sound.play()
                 self.word_label.config(text=f"You lost! Word was: {self.secret_word}")
                 self.disable_buttons()
                 return
 
+
         self.update_word_display()
 
         if all(l in self.guessed_letters for l in self.secret_word):
+            self.win_sound.play()
             self.word_label.config(text="You won!")
             self.disable_buttons()
+
 
     def disable_buttons(self):
         for widget in self.buttons_frame.winfo_children():
