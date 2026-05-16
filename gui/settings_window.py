@@ -28,7 +28,7 @@ class SettingsWindow(tk.Toplevel):
         self.sidebar.pack(side="left", fill="y")
 
         # Main content area
-        self.content = tk.Frame(self, bg="#2b2b2b")
+        self.content = tk.Frame(self, bg=["#2b2b2b"])
         self.content.pack(side="right", expand=True, fill="both")
 
         # Sidebar buttons
