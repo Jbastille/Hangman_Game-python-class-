@@ -1,21 +1,26 @@
 import tkinter as tk
 import random
+from PIL import Image, ImageTk
 
-
-class GameWindow(tk.Toplevel):
-    def __init__(self, master, settings):
+class GameFrame(tk.Frame):
+    def __init__(self, master, settings, game_mode):
         super().__init__(master)
 
+        self.master = master
+
+        self.pack(fill="both", expand=True)
+
+        self.game_mode = game_mode
+        self.setup_background()
         self.settings = settings
-        self.title("Hangman")
         self.settings.apply_theme_to_window(self)
-        self.settings.apply_window_size(self)
 
         # Word list (you can replace this with a file later)
-        self.words = ["python", "hangman", "developer", "project", "settings"]
+        word_data = self.game_mode.get_random_word()
 
         # Game state
-        self.secret_word = random.choice(self.words)
+        self.secret_word = word_data[0]
+        self.hint = word_data[1]
         self.guessed_letters = set()
         self.lives = 6
 
@@ -29,6 +34,23 @@ class GameWindow(tk.Toplevel):
     # ---------------------------------------------------------
     def create_layout(self):
         theme = self.settings.theme
+
+        self.category_label = tk.Label(
+            self,
+            text=self.game_mode.name,
+            font=("Arial", 20, "bold"),
+            bg=self.game_mode.background_color
+        )
+        self.category_label.pack(pady=10)
+
+        self.hint_label = tk.Label(
+            self,
+            text=f"Hint: {self.hint}",
+            font=("Arial", 14),
+            bg=self.game_mode.background_color
+        )
+        self.hint_label.pack()
+
 
         # Word display
         self.word_label = tk.Label(
@@ -86,7 +108,7 @@ class GameWindow(tk.Toplevel):
         tk.Button(
             bottom,
             text="Back to Menu",
-            command=self.destroy
+            command=self.master.show_categories
         ).pack(side="left", padx=10)
 
     # ---------------------------------------------------------
@@ -137,13 +159,51 @@ class GameWindow(tk.Toplevel):
             widget.config(state="disabled")
 
     def restart_game(self):
-        self.secret_word = random.choice(self.words)
+
+        word_data = self.game_mode.get_random_word()
+
+        self.secret_word = word_data[0]
+        self.hint = word_data[1]
+
         self.guessed_letters = set()
         self.lives = 6
 
-        self.lives_label.config(text=f"Lives: {self.lives}")
+        self.hint_label.config(
+        text=f"Hint: {self.hint}"
+        )
+
+        self.lives_label.config(
+        text=f"Lives: {self.lives}"
+        )
+
         self.update_word_display()
         self.update_hangman_display()
 
         for widget in self.buttons_frame.winfo_children():
             widget.config(state="normal")
+
+
+    def setup_background(self):
+
+        # Load image
+        image = Image.open(
+            self.game_mode.background_image
+        )
+
+        # Resize image to window size
+        image = image.resize((1280, 720))
+
+        self.bg_image = ImageTk.PhotoImage(image)
+
+        # Background label
+        self.bg_label = tk.Label(
+            self,
+            image=self.bg_image
+        )
+
+        self.bg_label.place(
+        x=0,
+        y=0,
+        relwidth=1,
+        relheight=1
+    )

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>38dc9754-9e70-4f7e-8277-7e031dd68c05</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Hangman_Game.py</StartupFile>
+    <StartupFile>gui\main_window.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,31 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="gui\category_window.py" />
+    <Compile Include="gui\game_frame.py" />
+    <Compile Include="gui\category_frame.py" />
+    <Compile Include="gui\main_window.py" />
+    <Compile Include="gui\main_menu_frame.py" />
+    <Compile Include="gui\settings_window.py" />
+    <Compile Include="gui\widgets.py" />
+    <Compile Include="gui\__init__.py" />
     <Compile Include="Hangman_Game.py" />
+    <Compile Include="Modes\animals_mode.py" />
+    <Compile Include="Modes\countries_mode.py" />
+    <Compile Include="Modes\food_mode.py" />
+    <Compile Include="Modes\sports_mode.py" />
+    <Compile Include="Modes\technology_mode.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="gui\" />
+    <Folder Include="gui\__pycache__\" />
+    <Folder Include="Modes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gui\__pycache__\category_window.cpython-39.pyc" />
+    <Content Include="gui\__pycache__\game_window.cpython-39.pyc" />
+    <Content Include="gui\__pycache__\settings_window.cpython-39.pyc" />
+    <Content Include="gui\__pycache__\__init__.cpython-39.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

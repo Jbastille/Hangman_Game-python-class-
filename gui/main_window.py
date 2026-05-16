@@ -1,81 +1,70 @@
 import tkinter as tk
-from tkinter import ttk
 
 from settings.settings_manager import SettingsManager
-from gui.settings_window import SettingsWindow
-from gui.game_window import GameWindow
 
+from gui.main_menu_frame import MainMenuFrame
+from gui.category_frame import CategoryFrame
+from gui.game_frame import GameFrame
 
 
 class MainWindow(tk.Tk):
+
     def __init__(self):
+
         super().__init__()
 
-        # Load settings
         self.settings = SettingsManager()
 
-        # Apply theme + window size
+        self.title("Hangman")
+
         self.settings.apply_theme_to_window(self)
         self.settings.apply_window_size(self)
 
-        # Window title
-        self.title("Hangman Game")
+        self.current_frame = None
 
-        # Build UI
-        self.create_widgets()
+        self.show_main_menu()
 
-    def create_widgets(self):
-        # Title label
-        title = tk.Label(
+    # ---------------------------------------------------------
+    # FRAME SWITCHING
+    # ---------------------------------------------------------
+    def switch_frame(self, new_frame):
+
+        if self.current_frame is not None:
+            self.current_frame.destroy()
+
+        self.current_frame = new_frame
+        self.current_frame.pack(fill="both", expand=True)
+
+    # ---------------------------------------------------------
+    # SCREENS
+    # ---------------------------------------------------------
+    def show_main_menu(self):
+
+        frame = MainMenuFrame(self, self.settings)
+
+        self.switch_frame(frame)
+
+    def show_categories(self):
+
+        frame = CategoryFrame(self, self.settings)
+
+        self.switch_frame(frame)
+
+    def start_game(self, mode):
+
+        frame = GameFrame(
             self,
-            text="Hangman Game",
-            font=("Arial", 32),
-            bg=self.settings.theme["bg"],
-            fg=self.settings.theme["fg"]
+            self.settings,
+            mode
         )
-        title.pack(pady=40)
 
-        # Start Game button
-        start_btn = tk.Button(
-            self,
-            text="Start Game",
-            font=("Arial", 18),
-            width=20,
-            command=self.start_game
-        )
-        start_btn.pack(pady=10)
-
-        # Settings button
-        settings_btn = tk.Button(
-            self,
-            text="Settings",
-            font=("Arial", 18),
-            width=20,
-            command=self.open_settings
-        )
-        settings_btn.pack(pady=10)
-
-        # Quit button
-        quit_btn = tk.Button(
-            self,
-            text="Quit",
-            font=("Arial", 18),
-            width=20,
-            command=self.quit
-        )
-        quit_btn.pack(pady=10)
-
-    def open_settings(self):
-        SettingsWindow(self, self.settings)
-
-    def start_game(self):
-        GameWindow(self, self.settings)
-    
+        self.switch_frame(frame)
 
 
-
-
+# ---------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------
 if __name__ == "__main__":
+
     app = MainWindow()
     app.mainloop()
-
