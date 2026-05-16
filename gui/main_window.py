@@ -1,25 +1,27 @@
 import tkinter as tk
 from tkinter import ttk
-
 from settings.settings_manager import SettingsManager
 from gui.settings_window import SettingsWindow
 from gui.game_window import GameWindow
 
 
 
-class MainWindow(tk.Tk):
-    def __init__(self):
-        super().__init__()
+class MainWindow(tk.Frame):
+    def __init__(self,root):
+        super().__init__(root)
+        self.root = root
+        self.root.title("Hangman")
 
         # Load settings
         self.settings = SettingsManager()
 
-        # Apply theme + window size
-        self.settings.apply_theme_to_window(self)
-        self.settings.apply_window_size(self)
+        # Apply theme and window size to game window
+        self.settings.apply_theme_to_window(self.root)
+        self.settings.apply_window_size(self.root)
+        self.configure(bg=self.settings.theme["bg"])
 
-        # Window title
-        self.title("Hangman Game")
+        self.pack(fill="both", expand=True)
+
 
         # Build UI
         self.create_widgets()
@@ -29,7 +31,7 @@ class MainWindow(tk.Tk):
         title = tk.Label(
             self,
             text="Hangman Game",
-            font=("Arial", 32),
+            font=("Freestyle script", 60),
             bg=self.settings.theme["bg"],
             fg=self.settings.theme["fg"]
         )
@@ -39,7 +41,7 @@ class MainWindow(tk.Tk):
         start_btn = tk.Button(
             self,
             text="Start Game",
-            font=("Arial", 18),
+            font=("Freestyle script", 18),
             width=20,
             command=self.start_game
         )
@@ -49,7 +51,7 @@ class MainWindow(tk.Tk):
         settings_btn = tk.Button(
             self,
             text="Settings",
-            font=("Arial", 18),
+            font=("Freestyle script", 18),
             width=20,
             command=self.open_settings
         )
@@ -59,7 +61,7 @@ class MainWindow(tk.Tk):
         quit_btn = tk.Button(
             self,
             text="Quit",
-            font=("Arial", 18),
+            font=("Freestyle script", 18),
             width=20,
             command=self.quit
         )
