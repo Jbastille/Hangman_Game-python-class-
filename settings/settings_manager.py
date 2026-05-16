@@ -1,0 +1,100 @@
+import json
+import os
+import pygame
+from settings.Themes import THEMES  
+
+
+class SettingsManager:
+    def __init__(self):
+        # Path to config.json inside the settings folder
+        self.config_path = os.path.join(os.path.dirname(__file__), "config.json")
+
+        # Load settings from JSON
+        self.load()
+
+    # ---------------------------------------------------------
+    # LOAD SETTINGS
+    # ---------------------------------------------------------
+    def load(self):
+        with open(self.config_path, "r") as f:
+            self.data = json.load(f)
+
+        # Extract values from JSON
+        self.theme_name = self.data["theme"]
+        self.music_volume = self.data["music_volume"]
+        self.sfx_volume = self.data["sfx_volume"]
+        self.screen_size = self.data["screen_size"]
+        self.fullscreen = self.data["fullscreen"]
+
+        # Load theme colors from themes.py
+        self.theme = THEMES[self.theme_name]
+
+    # ---------------------------------------------------------
+    # SAVE SETTINGS
+    # ---------------------------------------------------------
+    def save(self):
+        with open(self.config_path, "w") as f:
+            json.dump(self.data, f, indent=4)
+
+    # ---------------------------------------------------------
+    # THEME FUNCTIONS
+    # ---------------------------------------------------------
+    def apply_theme(self, theme_name):
+        self.theme_name = theme_name
+        self.data["theme"] = theme_name
+        self.theme = THEMES[theme_name]
+
+    def apply_theme_to_window(self, window):
+        window.configure(bg=self.theme["bg"])
+
+    # ---------------------------------------------------------
+    # VOLUME FUNCTIONS
+    # ---------------------------------------------------------
+    def set_music_volume(self, value):
+        self.music_volume = int(value)
+        self.data["music_volume"] = self.music_volume
+        try:
+            pygame.mixer.music.set_volume(self.music_volume / 70)
+        except :
+            pass
+        
+         
+
+    def set_sfx_volume(self, value):
+        self.sfx_volume = int(value)
+        self.data["sfx_volume"] = self.sfx_volume
+        try:
+            pygame.mixer.Sound.set_volume(self.win_sound, self.sfx_volume / 70)
+            pygame.mixer.Sound.set_volume(self.lose_sound, self.sfx_volume / 70)
+            pygame.mixer.Sound.set_volume(self.click_sound, self.sfx_volume / 70)
+        except:
+            pass
+
+    # ---------------------------------------------------------
+    # DISPLAY FUNCTIONS
+    # ---------------------------------------------------------
+    def set_screen_size(self, size):
+        self.screen_size = size
+        self.data["screen_size"] = size
+
+    def apply_window_size(self, window):
+        window.geometry(self.screen_size)
+
+    def toggle_fullscreen(self):
+        self.fullscreen = not self.fullscreen
+        self.data["fullscreen"] = self.fullscreen
+
+    # ---------------------------------------------------------
+    # RESET TO DEFAULTS
+    # ---------------------------------------------------------
+    def reset(self):
+        # Reset to default values
+        self.data = {
+            "theme": "dark",
+            "music_volume": 70,
+            "sfx_volume": 70,
+            "screen_size": "1280x720",
+            "fullscreen": False
+        }
+        self.save()
+        self.load()
