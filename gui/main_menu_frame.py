@@ -20,7 +20,7 @@ class MainMenuFrame(tk.Frame):
         title = tk.Label(
             self,
             text="Hangman Game",
-            font=("Arial", 32, "bold"),
+            font=("Freestyle script", 60, "bold"),
             bg=bg,
             fg=fg
         )
@@ -31,7 +31,7 @@ class MainMenuFrame(tk.Frame):
         tk.Button(
             self,
             text="Start Game",
-            font=("Arial", 18),
+            font=("Freestyle script", 18),
             width=20,
             command=self.master.show_categories
         ).pack(pady=10)
@@ -40,7 +40,7 @@ class MainMenuFrame(tk.Frame):
         tk.Button(
             self,
             text="Settings",
-            font=("Arial", 18),
+            font=("Freestyle script", 18),
             width=20,
             command=self.open_settings
         ).pack(pady=10)
@@ -49,7 +49,7 @@ class MainMenuFrame(tk.Frame):
         tk.Button(
             self,
             text="Quit",
-            font=("Arial", 18),
+            font=("Freestyle script", 18),
             width=20,
             command=self.master.quit
         ).pack(pady=10)

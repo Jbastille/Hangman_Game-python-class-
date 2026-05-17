@@ -24,7 +24,7 @@ class CategoryFrame(tk.Frame):
         title = tk.Label(
             self,
             text="Choose Category",
-            font=("Arial", 28, "bold"),
+            font=("Freestyle script", 28, "bold"),
             bg=bg,
             fg=fg
         )
@@ -44,7 +44,7 @@ class CategoryFrame(tk.Frame):
             tk.Button(
                 self,
                 text=mode.name,
-                font=("Arial", 16),
+                font=("Freestyle script", 16),
                 width=20,
                 height=2,
                 command=lambda m=mode:

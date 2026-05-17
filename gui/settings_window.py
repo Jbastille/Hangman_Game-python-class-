@@ -19,9 +19,7 @@ class SettingsWindow(tk.Toplevel):
 
         self.create_layout()
 
-    # ---------------------------------------------------------
-    # LAYOUT
-    # ---------------------------------------------------------
+
     def create_layout(self):
         # Sidebar
         self.sidebar = tk.Frame(self, width=150, bg="#1e1e1e")
@@ -59,9 +57,7 @@ class SettingsWindow(tk.Toplevel):
         for widget in self.content.winfo_children():
             widget.destroy()
 
-    # ---------------------------------------------------------
-    # AUDIO SETTINGS
-    # ---------------------------------------------------------
+
     def show_audio_settings(self):
         self.clear_content()
 
@@ -91,9 +87,7 @@ class SettingsWindow(tk.Toplevel):
             command=self.settings.set_sfx_volume
         ).pack()
 
-    # ---------------------------------------------------------
-    # THEME SETTINGS
-    # ---------------------------------------------------------
+
     def show_theme_settings(self):
         self.clear_content()
 
@@ -105,7 +99,7 @@ class SettingsWindow(tk.Toplevel):
             font=("Arial", 16)
         ).pack(pady=10)
 
-        # StringVar to track selected theme
+      
         self.theme_var = tk.StringVar(value=self.settings.theme_name)
 
         tk.Radiobutton(
@@ -133,17 +127,17 @@ class SettingsWindow(tk.Toplevel):
     def change_theme(self):
         new_theme = self.theme_var.get()
 
-        # Update settings object
+        
         self.settings.theme_name = new_theme
         self.settings.theme = THEMES[new_theme]
 
         # Save to config.json
         self.settings.save()
 
-        # Apply theme to this window
+     
         self.settings.apply_theme_to_window(self)
 
-        # Recolor widgets inside settings window
+     
         for widget in self.winfo_children():
             try:
                 widget.configure(
@@ -156,9 +150,7 @@ class SettingsWindow(tk.Toplevel):
         # Apply theme to main window
         self.settings.apply_theme_to_window(self.master)
 
-    # ---------------------------------------------------------
-    # DISPLAY SETTINGS
-    # ---------------------------------------------------------
+
     def show_display_settings(self):
         self.clear_content()
 
@@ -191,9 +183,8 @@ class SettingsWindow(tk.Toplevel):
             selectcolor="#444"
         ).pack()
 
-    # ---------------------------------------------------------
+ 
     # SAVE SETTINGS
-    # ---------------------------------------------------------
     def show_save_settings(self):
         self.clear_content()
 
