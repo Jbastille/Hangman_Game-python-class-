@@ -57,7 +57,10 @@ class GameFrame(tk.Frame):
         self.create_layout()
         self.update_word_display()
         self.update_hangman_display()
-        
+
+        self.timer_running = True
+        self.update_timer()
+
  
         pygame.mixer.init()
         self.win_sound = pygame.mixer.Sound("assets/sounds/chime_up.wav")
@@ -67,12 +70,11 @@ class GameFrame(tk.Frame):
       
 
 
-    #SOUND EFFECTS FUNCTION
+ 
     def play_click_sound(self, letter):
         self.click_sound.play()
         self.guess_letter(letter.lower())
-        self.timer_running = True
-        self.update_timer()
+        
 
     def create_layout(self):
         theme = self.settings.theme

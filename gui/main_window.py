@@ -1,8 +1,9 @@
 import tkinter as tk
 
 from settings.settings_manager import SettingsManager
+from assets.sounds.audio_manager import AudioManager
 
-from assets.sounds.audio_manager import AudioManager, CATEGORY_MUSIC
+from assets.sounds.Theme_Music import CATEGORY_MUSIC
 
 from gui.main_menu_frame import MainMenuFrame
 from gui.category_frame import CategoryFrame
@@ -57,23 +58,20 @@ class MainWindow(tk.Tk):
 
     def show_difficulties(self, mode):
 
-    # Play category background music
-     music_file = CATEGORY_MUSIC.get(mode.name)
-     if music_file:
-        self.audio.play_music(music_file)
+        # Play category background music
+        music_file = CATEGORY_MUSIC.get(mode.name)
+        if music_file:
+            self.audio.play_music(music_file)
 
-     frame = GameFrame(
-        self,
-        self.settings,
-        mode
-    )
-
-     self.switch_frame(frame)
-     frame = DifficultyFrame(
+        # Show difficulty selection screen
+        frame = DifficultyFrame(
             self,
             self.settings,
             mode
         )
+
+        self.switch_frame(frame)
+
 
 
     def start_game(self, mode, difficulty):
