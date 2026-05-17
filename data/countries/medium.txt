@@ -1,0 +1,20 @@
+argentina:Home of tango
+portugal:Country next to Spain
+thailand:Famous Southeast Asian country
+switzerland:Known for chocolate and banks
+australia:Island continent country
+pakistan:Country in South Asia
+germany:European industrial country
+norway:Scandinavian country
+turkey:Country between Europe and Asia
+colombia:Famous for coffee
+vietnam:Southeast Asian country
+croatia:European coastal nation
+hungary:Country with Budapest
+romania:Eastern European country
+denmark:Home of LEGO
+belgium:Famous for waffles and chocolate
+morocco:North African country
+ecuador:Country on the equator
+nepal:Home of Mount Everest
+serbia:Balkan country

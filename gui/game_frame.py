@@ -3,7 +3,7 @@ import random
 from PIL import Image, ImageTk
 
 class GameFrame(tk.Frame):
-    def __init__(self, master, settings, game_mode):
+    def __init__(self, master, settings, game_mode, difficulty):
         super().__init__(master)
 
         self.master = master
@@ -11,9 +11,18 @@ class GameFrame(tk.Frame):
         self.pack(fill="both", expand=True)
 
         self.game_mode = game_mode
+        self.difficulty = difficulty
         self.setup_background()
         self.settings = settings
         self.settings.apply_theme_to_window(self)
+
+        difficulty_lives = {
+            "easy": 8,
+            "medium": 6,
+            "hard": 4
+        }
+
+        self.lives = difficulty_lives[difficulty]
 
         # Word list (you can replace this with a file later)
         word_data = self.game_mode.get_random_word()
@@ -34,6 +43,16 @@ class GameFrame(tk.Frame):
     # ---------------------------------------------------------
     def create_layout(self):
         theme = self.settings.theme
+
+        self.difficulty_label = tk.Label(
+            self,
+            text=f"Difficulty: {self.difficulty.capitalize()}",
+            font=("Arial", 14),
+            bg="#222222",
+            fg="white"
+        )
+
+        self.difficulty_label.pack()
 
         self.category_label = tk.Label(
             self,

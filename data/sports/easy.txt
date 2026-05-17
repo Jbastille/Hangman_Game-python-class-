@@ -1,0 +1,20 @@
+soccer:Most popular world sport
+tennis:Played with rackets
+golf:Sport with clubs and holes
+boxing:Fighting sport with gloves
+hockey:Played on ice
+rugby:Rough team sport
+karate:Japanese martial art
+running:Basic athletic activity
+cycling:Sport using bicycles
+skiing:Winter mountain sport
+cricket:Popular bat-and-ball sport
+bowling:Rolling ball sport
+fencing:Sword fighting sport
+diving:Jumping into water
+rowing:Boat racing sport
+judo:Japanese combat sport
+skating:Sport on ice or wheels
+climbing:Scaling walls or mountains
+darts:Target throwing game
+billiards:Played on a green table

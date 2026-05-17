@@ -13,13 +13,4 @@ class TechnologyMode(GameMode):
 
         self.background_color = "#e6e6e6"
 
-        self.words = [
-            ("python", "Programming language"),
-            ("keyboard", "Computer input device"),
-            ("internet", "Global network"),
-            ("database", "Stores information"),
-            ("algorithm", "Step-by-step solution"),
-            ("processor", "Brain of the computer"),
-            ("software", "Programs and applications"),
-            ("network", "Connected systems")
-        ]
+        self.word_folder = "technology"

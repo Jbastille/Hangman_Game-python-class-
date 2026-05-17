@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="gui\difficulty_frame.py" />
     <Compile Include="gui\category_window.py" />
     <Compile Include="gui\game_frame.py" />
     <Compile Include="gui\category_frame.py" />

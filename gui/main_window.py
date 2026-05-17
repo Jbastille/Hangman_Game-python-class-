@@ -5,6 +5,7 @@ from settings.settings_manager import SettingsManager
 from gui.main_menu_frame import MainMenuFrame
 from gui.category_frame import CategoryFrame
 from gui.game_frame import GameFrame
+from gui.difficulty_frame import DifficultyFrame
 
 
 class MainWindow(tk.Tk):
@@ -50,12 +51,23 @@ class MainWindow(tk.Tk):
 
         self.switch_frame(frame)
 
-    def start_game(self, mode):
+    def show_difficulties(self, mode):
+
+        frame = DifficultyFrame(
+            self,
+            self.settings,
+            mode
+        )
+
+        self.switch_frame(frame)
+
+    def start_game(self, mode, difficulty):
 
         frame = GameFrame(
             self,
             self.settings,
-            mode
+            mode,
+            difficulty
         )
 
         self.switch_frame(frame)

@@ -1,0 +1,25 @@
+cat:Common household pet
+dog:Man's best friend
+lion:King of the jungle
+tiger:Striped big cat
+horse:Animal used for riding
+sheep:Animal with wool
+zebra:Black and white striped animal
+mouse:Small rodent
+panda:Black and white bear
+snake:Legless reptile
+rabbit:Animal with long ears
+bear:Large furry animal
+duck:Bird that swims
+frog:Green jumping amphibian
+monkey:Animal that climbs trees
+cow:Farm animal that gives milk
+pig:Pink farm animal
+goat:Farm animal with horns
+deer:Forest animal with antlers
+owl:Bird active at night
+fox:Clever wild animal
+bee:Insect that makes honey
+ant:Small hardworking insect
+fish:Animal that lives in water
+whale:Largest sea mammal

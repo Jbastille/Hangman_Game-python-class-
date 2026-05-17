@@ -1,0 +1,20 @@
+cryptography:Science of secure communication
+motherboard:Main computer circuit board
+virtualization:Running virtual systems
+cybersecurity:Protection against hacking
+authentication:Verifying identity online
+microprocessor:Central processing component
+nanotechnology:Engineering at tiny scales
+telecommunication:Long-distance communication technology
+biometrics:Identification using body features
+supercomputer:Extremely powerful computer
+blockchain:Distributed digital ledger
+electromagnetism:Physics behind electronics
+semiconductor:Material used in computer chips
+neuralnetwork:AI learning system
+quantumcomputing:Advanced computing technology
+geolocation:Finding physical device position
+multithreading:Running tasks simultaneously
+containerization:Isolated software deployment
+photolithography:Chip manufacturing process
+electrochemistry:Science behind batteries
