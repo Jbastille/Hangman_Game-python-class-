@@ -3,6 +3,8 @@
 .vs/
 *.user
 *.suo
+obj
+
 
 # Python
 __pycache__/
