@@ -69,7 +69,7 @@ class MainWindow(tk.Tk):
     )
 
      self.switch_frame(frame)
-        frame = DifficultyFrame(
+     frame = DifficultyFrame(
             self,
             self.settings,
             mode

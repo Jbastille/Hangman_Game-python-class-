@@ -45,20 +45,20 @@ class GameFrame(tk.Frame):
         self.time_left = difficulty_times[difficulty]
 
 
-        # Word list (you can replace this with a file later)
+        #this is where you can put the word list
         word_data = self.game_mode.get_random_word()
 
-        # Game state
+       
         self.secret_word = word_data[0]
         self.hint = word_data[1]
         self.guessed_letters = set()
 
-        # Build UI
+        # Building the UserIterface
         self.create_layout()
         self.update_word_display()
         self.update_hangman_display()
         
-        #creating the sounds
+ 
         pygame.mixer.init()
         self.win_sound = pygame.mixer.Sound("assets/sounds/chime_up.wav")
         self.lose_sound = pygame.mixer.Sound("assets/sounds/whah_whah.wav")
@@ -74,9 +74,6 @@ class GameFrame(tk.Frame):
         self.timer_running = True
         self.update_timer()
 
-    # ---------------------------------------------------------
-    # UI LAYOUT
-    # ---------------------------------------------------------
     def create_layout(self):
         theme = self.settings.theme
 
@@ -198,9 +195,7 @@ class GameFrame(tk.Frame):
             command=self.master.show_categories
         ).pack(side="left", padx=10)
 
-    # ---------------------------------------------------------
-    # GAME LOGIC
-    # ---------------------------------------------------------
+
     def update_word_display(self):
         display = " ".join(
             [letter if letter in self.guessed_letters else "_" for letter in self.secret_word]
