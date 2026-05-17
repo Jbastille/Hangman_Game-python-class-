@@ -2,6 +2,8 @@ import tkinter as tk
 
 from settings.settings_manager import SettingsManager
 
+from assets.sounds.audio_manager import AudioManager, CATEGORY_MUSIC
+
 from gui.main_menu_frame import MainMenuFrame
 from gui.category_frame import CategoryFrame
 from gui.game_frame import GameFrame
@@ -12,6 +14,8 @@ class MainWindow(tk.Tk):
     def __init__(self):
 
         super().__init__()
+
+        self.audio = AudioManager()
 
         self.settings = SettingsManager()
 
@@ -52,13 +56,19 @@ class MainWindow(tk.Tk):
 
     def start_game(self, mode):
 
-        frame = GameFrame(
-            self,
-            self.settings,
-            mode
-        )
+    # Play category background music
+     music_file = CATEGORY_MUSIC.get(mode.name)
+     if music_file:
+        self.audio.play_music(music_file)
 
-        self.switch_frame(frame)
+     frame = GameFrame(
+        self,
+        self.settings,
+        mode
+    )
+
+     self.switch_frame(frame)
+
 
 
 # ---------------------------------------------------------

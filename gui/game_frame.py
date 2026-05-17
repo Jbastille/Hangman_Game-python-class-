@@ -1,6 +1,9 @@
 import tkinter as tk
 import random
 from PIL import Image, ImageTk
+import pygame
+
+from assets.sounds.audio_manager import AudioManager
 
 class GameFrame(tk.Frame):
     def __init__(self, master, settings, game_mode):
@@ -15,7 +18,7 @@ class GameFrame(tk.Frame):
         self.settings = settings
         self.settings.apply_theme_to_window(self)
 
-        # Word list (you can replace this with a file later)
+        # Word list (you can replace this with a file later) #done
         word_data = self.game_mode.get_random_word()
 
         # Game state
@@ -28,6 +31,20 @@ class GameFrame(tk.Frame):
         self.create_layout()
         self.update_word_display()
         self.update_hangman_display()
+        
+        #creating the sounds
+        pygame.mixer.init()
+        self.win_sound = pygame.mixer.Sound("assets/sounds/chime_up.wav")
+        self.lose_sound = pygame.mixer.Sound("assets/sounds/whah_whah.wav")
+        self.click_sound = pygame.mixer.Sound("assets/sounds/floop2_x.wav")
+
+      
+
+
+    #SOUND EFFECTS FUNCTION
+    def play_click_sound(self, letter):
+        self.click_sound.play()
+        self.guess_letter(letter.lower())
 
     # ---------------------------------------------------------
     # UI LAYOUT
@@ -91,7 +108,7 @@ class GameFrame(tk.Frame):
                 self.buttons_frame,
                 text=letter,
                 width=4,
-                command=lambda l=letter: self.guess_letter(l.lower())
+                command=lambda l=letter: self.play_click_sound(l)
             )
             btn.pack(side="left", padx=2, pady=2)
 
@@ -144,6 +161,7 @@ class GameFrame(tk.Frame):
             self.update_hangman_display()
 
             if self.lives == 0:
+                self.lose_sound.play()
                 self.word_label.config(text=f"You lost! Word was: {self.secret_word}")
                 self.disable_buttons()
                 return
@@ -151,6 +169,7 @@ class GameFrame(tk.Frame):
         self.update_word_display()
 
         if all(l in self.guessed_letters for l in self.secret_word):
+            self.win_sound.play()
             self.word_label.config(text="You won!")
             self.disable_buttons()
 

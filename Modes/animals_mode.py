@@ -1,5 +1,5 @@
 from Game.game_mode import GameMode
-
+import pygame
 
 class AnimalsMode(GameMode):
 
@@ -12,6 +12,9 @@ class AnimalsMode(GameMode):
         self.background_color = "#dff6dd"
 
         self.background_image = "assets/background_images/Animals.png"
+
+
+
 
         self.words = [
             ("elephant", "Largest land animal"),
