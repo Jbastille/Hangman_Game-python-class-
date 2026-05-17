@@ -16,13 +16,30 @@ class GameFrame(tk.Frame):
         self.settings = settings
         self.settings.apply_theme_to_window(self)
 
+        reveal_limits = {
+            "easy": float("inf"),
+            "medium": 2,
+            "hard": 1
+        }
+
+        self.remaining_reveals = reveal_limits[difficulty]
+
         difficulty_lives = {
-            "easy": 8,
-            "medium": 6,
+            "easy": 6,
+            "medium": 5,
             "hard": 4
         }
 
         self.lives = difficulty_lives[difficulty]
+
+        difficulty_times = {
+            "easy": 120,
+            "medium": 90,
+            "hard": 60
+        }
+
+        self.time_left = difficulty_times[difficulty]
+
 
         # Word list (you can replace this with a file later)
         word_data = self.game_mode.get_random_word()
@@ -31,18 +48,28 @@ class GameFrame(tk.Frame):
         self.secret_word = word_data[0]
         self.hint = word_data[1]
         self.guessed_letters = set()
-        self.lives = 6
 
         # Build UI
         self.create_layout()
         self.update_word_display()
         self.update_hangman_display()
+        self.timer_running = True
+        self.update_timer()
 
     # ---------------------------------------------------------
     # UI LAYOUT
     # ---------------------------------------------------------
     def create_layout(self):
         theme = self.settings.theme
+
+        self.category_label = tk.Label(
+            self,
+            text=self.game_mode.name,
+            font=("Arial", 20, "bold"),
+            bg=self.game_mode.background_color
+        )
+        self.category_label.pack(pady=10)
+
 
         self.difficulty_label = tk.Label(
             self,
@@ -54,13 +81,6 @@ class GameFrame(tk.Frame):
 
         self.difficulty_label.pack()
 
-        self.category_label = tk.Label(
-            self,
-            text=self.game_mode.name,
-            font=("Arial", 20, "bold"),
-            bg=self.game_mode.background_color
-        )
-        self.category_label.pack(pady=10)
 
         self.hint_label = tk.Label(
             self,
@@ -70,6 +90,30 @@ class GameFrame(tk.Frame):
         )
         self.hint_label.pack()
 
+        self.timer_label = tk.Label(
+            self,
+            text=f"Time Left: {self.time_left}",
+            font=("Arial", 14),
+            bg="#222222",
+            fg="white"
+        )
+
+        self.timer_label.pack()
+
+        if self.remaining_reveals == float("inf"):
+            reveal_text = "Reveals: Unlimited"
+        else:
+            reveal_text = f"Reveals Left: {self.remaining_reveals}"
+
+        self.reveal_label = tk.Label(
+            self,
+            text=reveal_text,
+            font=("Arial", 14),
+            bg="#222222",
+            fg="white"
+        )
+
+        self.reveal_label.pack()
 
         # Word display
         self.word_label = tk.Label(
@@ -119,6 +163,12 @@ class GameFrame(tk.Frame):
         bottom.pack(pady=20)
 
         tk.Button(
+        bottom,
+        text="Reveal Letter",
+        command=self.reveal_letter
+        ).pack(side="left", padx=10)
+
+        tk.Button(
             bottom,
             text="Restart",
             command=self.restart_game
@@ -164,6 +214,7 @@ class GameFrame(tk.Frame):
 
             if self.lives == 0:
                 self.word_label.config(text=f"You lost! Word was: {self.secret_word}")
+                self.timer_running = False
                 self.disable_buttons()
                 return
 
@@ -171,6 +222,7 @@ class GameFrame(tk.Frame):
 
         if all(l in self.guessed_letters for l in self.secret_word):
             self.word_label.config(text="You won!")
+            self.timer_running = False
             self.disable_buttons()
 
     def disable_buttons(self):
@@ -185,7 +237,13 @@ class GameFrame(tk.Frame):
         self.hint = word_data[1]
 
         self.guessed_letters = set()
-        self.lives = 6
+        difficulty_lives = {
+            "easy": 6,
+            "medium": 5,
+            "hard": 4
+        }
+
+        self.lives = difficulty_lives[self.difficulty]
 
         self.hint_label.config(
         text=f"Hint: {self.hint}"
@@ -200,6 +258,21 @@ class GameFrame(tk.Frame):
 
         for widget in self.buttons_frame.winfo_children():
             widget.config(state="normal")
+
+        if hasattr(self, "timer_id"):
+            self.after_cancel(self.timer_id)
+
+        difficulty_times = {
+            "easy": 120,
+            "medium": 90,
+            "hard": 60
+        }
+
+        self.time_left = difficulty_times[self.difficulty]
+
+        self.timer_running = True
+        self.update_timer()
+
 
 
     def setup_background(self):
@@ -226,3 +299,80 @@ class GameFrame(tk.Frame):
         relwidth=1,
         relheight=1
     )
+
+    def update_timer(self):
+
+        if not self.timer_running:
+            return
+
+        minutes = self.time_left // 60
+        seconds = self.time_left % 60
+
+        self.timer_label.config(
+            text=f"Time Left: {minutes:02}:{seconds:02}"
+        )
+
+        if self.time_left > 0:
+
+            self.time_left -= 1
+
+            self.timer_id = self.after(
+                1000,
+                self.update_timer
+            )
+
+        else:
+
+            self.timer_running = False
+
+            self.word_label.config(
+            text=f"Time's up! Word was: {self.secret_word}"
+            )
+
+            self.disable_buttons()
+
+    def reveal_letter(self):
+
+        # No reveals left
+        if self.remaining_reveals <= 0:
+            return
+
+        # Find hidden letters
+        hidden_letters = [
+            letter for letter in self.secret_word
+            if letter not in self.guessed_letters
+        ]
+
+        # Word already solved
+        if not hidden_letters:
+            return
+
+        # Choose random hidden letter
+        revealed_letter = random.choice(hidden_letters)
+
+        # Add to guessed letters
+        self.guessed_letters.add(revealed_letter)
+
+        # Reduce reveals if not unlimited
+        if self.remaining_reveals != float("inf"):
+            self.remaining_reveals -= 1
+
+        # Update reveal label
+        if self.remaining_reveals == float("inf"):
+            text = "Reveals: Unlimited"
+        else:
+            text = f"Reveals Left: {self.remaining_reveals}"
+
+        self.reveal_label.config(text=text)
+
+        # Update word display
+        self.update_word_display()
+
+        # Check win
+        if all(l in self.guessed_letters for l in self.secret_word):
+
+            self.word_label.config(text="You won!")
+
+            self.timer_running = False
+
+            self.disable_buttons()
