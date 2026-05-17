@@ -1,5 +1,5 @@
 from Game.game_mode import GameMode
-
+import pygame
 
 class AnimalsMode(GameMode):
 

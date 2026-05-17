@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from gui.game_window import GameWindow
+from gui.game_frame import GameFrame
 
 from Modes.animals_mode import AnimalsMode
 from Modes.food_mode import FoodMode
@@ -80,7 +80,7 @@ class CategoryWindow(tk.Toplevel):
     # ---------------------------------------------------------
     def start_game(self, mode):
 
-        GameWindow(
+        GameFrame(
             self,
             self.settings,
             mode
