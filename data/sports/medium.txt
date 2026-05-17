@@ -1,0 +1,20 @@
+basketball:Played with hoops
+volleyball:Played over a net
+baseball:American bat-and-ball sport
+swimming:Sport in water
+wrestling:Combat grappling sport
+badminton:Racket sport with shuttlecock
+surfing:Riding ocean waves
+skateboard:Sport on four wheels
+snowboard:Winter board sport
+archery:Sport using bows
+handball:Indoor passing sport
+canoeing:Paddling water sport
+gymnastics:Sport with flips and balance
+kickboxing:Combat sport with kicks
+lacrosse:Sport with stick nets
+polo:Horseback ball sport
+sailing:Boat racing using wind
+taekwondo:Korean martial art
+snooker:Precision cue sport
+curling:Winter sport with stones

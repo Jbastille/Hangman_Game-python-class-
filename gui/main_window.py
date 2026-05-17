@@ -7,6 +7,7 @@ from assets.sounds.audio_manager import AudioManager, CATEGORY_MUSIC
 from gui.main_menu_frame import MainMenuFrame
 from gui.category_frame import CategoryFrame
 from gui.game_frame import GameFrame
+from gui.difficulty_frame import DifficultyFrame
 
 
 class MainWindow(tk.Tk):
@@ -54,7 +55,7 @@ class MainWindow(tk.Tk):
 
         self.switch_frame(frame)
 
-    def start_game(self, mode):
+    def show_difficulties(self, mode):
 
     # Play category background music
      music_file = CATEGORY_MUSIC.get(mode.name)
@@ -68,7 +69,23 @@ class MainWindow(tk.Tk):
     )
 
      self.switch_frame(frame)
+        frame = DifficultyFrame(
+            self,
+            self.settings,
+            mode
+        )
 
+
+    def start_game(self, mode, difficulty):
+
+        frame = GameFrame(
+            self,
+            self.settings,
+            mode,
+            difficulty
+        )
+
+        self.switch_frame(frame)
 
 
 # ---------------------------------------------------------

@@ -1,0 +1,24 @@
+artichoke:Leafy green vegetable
+pomegranate:Fruit with many seeds
+mayonnaise:Creamy sandwich sauce
+cauliflower:White vegetable
+bruschetta:Italian appetizer
+charcuterie:Meat and cheese board
+quesadilla:Mexican folded tortilla
+sauerkraut:Fermented cabbage dish
+fettuccine:Flat Italian pasta
+cappuccino:Coffee drink with foam
+ratatouille:French vegetable dish
+guacamole:Avocado-based dip
+prosciutto:Thin sliced Italian meat
+tiramisu:Italian coffee dessert
+jalapeno:Spicy green pepper
+mozzarella:Soft Italian cheese
+vinaigrette:Salad dressing sauce
+cannelloni:Stuffed pasta tubes
+gazpacho:Cold Spanish soup
+anchovies:Small salty fish
+kimchi:Korean fermented dish
+baklava:Sweet layered pastry
+gnocchi:Soft Italian dumplings
+sourdough:Fermented bread type

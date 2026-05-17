@@ -1,0 +1,20 @@
+powerlifting:Heavy strength sport
+tabletennis:Indoor paddle sport
+motocross:Off-road motorcycle racing
+synchronized:Coordinated swimming style
+biathlon:Winter skiing and shooting sport
+windsurfing:Board sport using sails
+triathlon:Three-event endurance sport
+equestrian:Horse riding competition
+mountaineering:Climbing large mountains
+paragliding:Air sport using parachute wing
+decathlon:Ten-event athletic competition
+freestyle:Creative skiing category
+speedskating:Fast ice racing sport
+wakeboarding:Water sport behind boats
+bobsleigh:Winter sled racing sport
+kitesurfing:Surfing with a kite
+speleology:Cave exploration activity
+orienteering:Navigation racing sport
+ultramarathon:Extreme long-distance running
+crosscountry:Skiing over long snowy terrain

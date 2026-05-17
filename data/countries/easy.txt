@@ -1,0 +1,20 @@
+canada:Country north of the USA
+brazil:Famous for football
+france:Country with Paris
+china:Most populated country
+india:Country in South Asia
+japan:Island nation in Asia
+egypt:Famous for pyramids
+spain:European country known for soccer
+mexico:Country south of the USA
+italy:Home of Rome
+russia:Largest country in the world
+sweden:Scandinavian country
+greece:Country with many islands
+chile:Long country in South America
+peru:Home of Machu Picchu
+kenya:African safari country
+ireland:Green island nation
+cuba:Caribbean island country
+poland:Country in Eastern Europe
+finland:Northern European country

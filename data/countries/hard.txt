@@ -1,0 +1,20 @@
+kazakhstan:Large Central Asian country
+madagascar:Large African island
+liechtenstein:Small European country
+azerbaijan:Country near the Caspian Sea
+mozambique:Southeast African country
+kyrgyzstan:Mountainous Asian country
+luxembourg:Small wealthy European nation
+tajikistan:Country near Afghanistan
+philippines:Southeast Asian archipelago
+turkmenistan:Central Asian desert country
+uzbekistan:Central Asian nation
+mauritania:Large West African country
+bosnia:Balkan European country
+seychelles:Island nation in the Indian Ocean
+guatemala:Central American country
+slovenia:Small European country
+zimbabwe:Southern African country
+suriname:Small South American country
+mongolia:Country of vast steppes
+cameroon:Central African nation

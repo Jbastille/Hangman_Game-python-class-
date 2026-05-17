@@ -13,13 +13,4 @@ class CountriesMode(GameMode):
 
         self.background_color = "#d9ecff"
 
-        self.words = [
-            ("canada", "North American country"),
-            ("brazil", "Famous for football"),
-            ("germany", "European country"),
-            ("japan", "Island nation in Asia"),
-            ("australia", "Country and continent"),
-            ("egypt", "Home of the pyramids"),
-            ("france", "Known for the Eiffel Tower"),
-            ("india", "Second most populated country")
-        ]
+        self.word_folder = "countries"

@@ -13,11 +13,4 @@ class AnimalsMode(GameMode):
 
         self.background_image = "assets/background_images/Animals.png"
 
-
-
-
-        self.words = [
-            ("elephant", "Largest land animal"),
-            ("penguin", "Flightless bird"),
-            ("giraffe", "Tall African animal")
-        ]
+        self.word_folder = "animals"

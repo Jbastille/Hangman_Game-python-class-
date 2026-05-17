@@ -48,7 +48,7 @@ class CategoryFrame(tk.Frame):
                 width=20,
                 height=2,
                 command=lambda m=mode:
-                    self.master.start_game(m)
+                    self.master.show_difficulties(m)
             ).pack(pady=8)
 
         tk.Button(

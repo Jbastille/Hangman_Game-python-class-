@@ -1,0 +1,20 @@
+computer:Electronic machine
+keyboard:Typing device
+monitor:Computer display screen
+printer:Prints documents
+internet:Global online network
+laptop:Portable computer
+browser:Used to access websites
+charger:Powers electronic devices
+tablet:Touchscreen device
+camera:Device for taking pictures
+speaker:Device that plays sound
+mouse:Computer pointing device
+usb:Portable connection device
+wifi:Wireless internet connection
+screen:Electronic display surface
+router:Internet distribution device
+headphones:Wearable audio device
+battery:Portable power source
+scanner:Copies physical documents
+microphone:Records sound input

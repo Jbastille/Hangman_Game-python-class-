@@ -1,0 +1,24 @@
+chimpanzee:Intelligent primatehippopotamus:Large river animal
+rhinoceros:Animal with a horn
+orangutan:Tree-dwelling ape
+chameleon:Color-changing reptile
+crocodile:Dangerous river reptile
+porcupine:Animal with sharp quills
+armadillo:Animal with armor shell
+platypus:Egg-laying mammal
+axolotl:Rare aquatic salamander
+wolverine:Fierce wild mammal
+meerkat:Small standing desert animal
+narwhal:Whale with a horn
+salamander:Amphibian with a tail
+anteater:Animal with a long tongue
+woodpecker:Bird that pecks trees
+grasshopper:Jumping green insect
+starfish:Sea creature with five arms
+manatee:Large gentle sea mammal
+tarantula:Large hairy spider
+hedgehog:Small spiny mammal
+stingray:Flat sea animal with tail
+mongoose:Snake-hunting mammal
+pterodactyl:Ancient flying reptile
+barracuda:Fast dangerous fish

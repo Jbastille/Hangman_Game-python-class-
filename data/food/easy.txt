@@ -1,0 +1,25 @@
+pizza:Popular Italian dish
+burger:Fast food sandwich
+apple:Common fruit
+banana:Yellow fruit
+bread:Baked food staple
+cheese:Made from milk
+pasta:Italian noodles
+salad:Healthy mixed dish
+cookie:Sweet baked snack
+orange:Citrus fruit
+milk:White dairy drink
+rice:Common grain food
+egg:Breakfast food from chickens
+grapes:Small fruit in bunches
+cake:Sweet baked dessert
+soup:Hot liquid meal
+steak:Cooked beef meat
+fries:Potato side dish
+onion:Vegetable that makes you cry
+carrot:Orange root vegetable
+pear:Green fruit
+lemon:Sour yellow fruit
+corn:Yellow vegetable on a cob
+bacon:Popular breakfast meat
+toast:Cooked bread slices

@@ -1,0 +1,25 @@
+lasagna:Layered pasta dish
+avocado:Green creamy fruit
+croissant:French pastry
+omelette:Egg breakfast dish
+sausage:Processed meat food
+brownie:Chocolate dessert
+cucumber:Green crunchy vegetable
+popcorn:Movie theater snack
+pancakes:Breakfast food with syrup
+watermelon:Large summer fruit
+spinach:Leafy green vegetable
+dumplings:Filled dough food
+milkshake:Cold blended drink
+hotdog:Sausage in a bun
+cupcake:Small frosted cake
+zucchini:Green summer vegetable
+nachos:Tortilla chip snack
+mushroom:Fungus used in cooking
+waffles:Breakfast food with squares
+pineapple:Tropical spiky fruit
+macaroni:Small curved pasta
+espresso:Strong coffee drink
+meatballs:Round cooked meat food
+sandwich:Food between bread slices
+cinnamon:Sweet brown spice

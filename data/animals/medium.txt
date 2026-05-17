@@ -1,0 +1,25 @@
+giraffe:Tall African animal
+penguin:Flightless bird
+alligator:Large reptile
+kangaroo:Australian jumping animal
+dolphin:Intelligent sea mammal
+cheetah:Fastest land animal
+gorilla:Largest primate
+hamster:Popular small pet
+octopus:Sea creature with eight arms
+flamingo:Pink bird
+leopard:Spotted wild cat
+buffalo:Large horned animal
+peacock:Bird with colorful feathers
+walrus:Sea mammal with tusks
+panther:Black wild cat
+parrot:Colorful talking bird
+koala:Australian tree animal
+jellyfish:Transparent sea creature
+raccoon:Masked nighttime animal
+squirrel:Tree animal that stores nuts
+lobster:Sea animal with claws
+turkey:Large farm bird
+hyena:Laughing African predator
+falcon:Fast hunting bird
+camel:Desert animal with humps

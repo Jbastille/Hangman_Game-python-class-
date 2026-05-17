@@ -13,8 +13,4 @@ class FoodMode(GameMode):
 
         self.background_color = "#fff0d9"
 
-        self.words = [
-            ("pizza", "Italian dish"),
-            ("burger", "Fast food"),
-            ("sushi", "Japanese food")
-        ]
+        self.word_folder = "food"

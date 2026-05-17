@@ -1,0 +1,20 @@
+software:Programs on a computer
+hardware:Physical computer parts
+database:Stores organized information
+processor:Brain of the computer
+bluetooth:Wireless connection technology
+firewall:Network security system
+microchip:Tiny electronic circuit
+download:Get files from internet
+password:Secret login code
+algorithm:Step-by-step computer instructions
+bandwidth:Internet speed capacity
+ethernet:Wired network connection
+antivirus:Software against malware
+touchscreen:Screen you can touch
+spreadsheet:Table-based software document
+cloudstorage:Online file storage
+javascript:Programming language for websites
+encryption:Securing digital information
+server:Computer providing services
+firmware:Software built into hardware
