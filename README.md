@@ -1,6 +1,8 @@
 # Hangman_Game
-🎮 Hangman Game — Python + Tkinter
-A modern, feature‑rich Hangman game built with Python, Tkinter, Pillow, and Pygame, featuring categories, difficulty levels, hints, sound effects, background music, and animated UI elements.
+🎮 Hangman Game — Python + Tkinter  + SQLite
+
+A modern, feature‑rich Hangman game built with Python, Tkinter, Pillow, Pygame, and SQLite.  
+Play as a **guest** or **create an account** to track your scores, view leaderboards, and manage your profile.
 
 ✨ Features
 🧩 Multiple Categories
@@ -94,13 +96,53 @@ Return to category selection
 
 Return to main menu
 
+---
+
+## 👤 User System (New)
+
+### 🔐 Guest or Account
+- **Play as Guest** — play immediately, scores are **not** saved
+- **Login / Sign Up** — create a personal account with hashed password storage
+
+### 🏆 Leaderboard
+- View global rankings by total score
+- Displays rank, username, total score, games played, wins
+
+### 📊 Profile & Stats
+- View personal game statistics:
+  - Total games played
+  - Wins / Losses
+  - Average score
+  - Total score
+- Change username
+- Change password (requires current password)
+
+### 💾 Score Tracking
+- Every game result (word, difficulty, attempts, hints, time, win/loss) is saved to an SQLite database (`database/hangman.db`)
+- Score is calculated dynamically:
+  - Base points per difficulty
+  - Bonus for remaining attempts
+  - Penalty for hints used
+  - Time bonus for fast wins
+- Total score accumulates across all games
+
+### 👨‍💻 Database Structure
+- `users` — username, password hash, creation date
+- `scores` — game results (word, difficulty, attempts, hints, time, win, score)
+
+
+---
+
+
+
+
 ▶️ How to Run
 1. Install dependencies
 
 -pip install pygame pillow
 2. Run the game from the project root:
 
--python Hangman_Game.py
+-python main.py
 
 Important:  
 Do not run files inside the gui/ folder directly — imports will break.
@@ -114,12 +156,15 @@ Pillow
 
 Pygame
 
+SQLite3 
+
 🚀 Future Improvements
 
 Animated hangman graphics
 
 Custom category editor
 
+Online multiplayer mode
 
 📜 License
 This project is open for personal or educational use.
