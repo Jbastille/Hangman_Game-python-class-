@@ -98,7 +98,7 @@ Return to main menu
 
 ---
 
-## 👤 User System (New)
+## 👤 User System 
 
 ### 🔐 Guest or Account
 - **Play as Guest** — play immediately, scores are **not** saved
@@ -125,6 +125,7 @@ Return to main menu
   - Penalty for hints used
   - Time bonus for fast wins
 - Total score accumulates across all games
+- Total_score = base_points + attempt_bonus - hint_penalty + time_bonus
 
 ### 👨‍💻 Database Structure
 - `users` — username, password hash, creation date
