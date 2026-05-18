@@ -10,7 +10,6 @@ from Modes.technology_mode import TechnologyMode
 class CategoryFrame(tk.Frame):
 
     def __init__(self, master, settings):
-
         super().__init__(master)
 
         self.master = master
@@ -28,7 +27,6 @@ class CategoryFrame(tk.Frame):
             bg=bg,
             fg=fg
         )
-
         title.pack(pady=30)
 
         modes = [
@@ -40,7 +38,6 @@ class CategoryFrame(tk.Frame):
         ]
 
         for mode in modes:
-
             tk.Button(
                 self,
                 text=mode.name,

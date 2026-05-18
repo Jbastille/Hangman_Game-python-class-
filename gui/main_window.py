@@ -13,9 +13,12 @@ from gui.difficulty_frame import DifficultyFrame
 
 class MainWindow(tk.Tk):
 
-    def __init__(self):
+    def __init__(self, user_id=None, username="Guest"):
 
         super().__init__()
+
+        self.user_id = user_id
+        self.username = username
 
         self.audio = AudioManager()
 
@@ -73,15 +76,12 @@ class MainWindow(tk.Tk):
         self.switch_frame(frame)
 
 
-
-    def start_game(self, mode, difficulty):
-
-        frame = GameFrame(
-            self,
-            self.settings,
-            mode,
-            difficulty
-        )
+    # I pass user_id (if None, use self.user_id in geust case)
+    def start_game(self, mode, difficulty, user_id=None):
+        
+        if user_id is None:
+            user_id = self.user_id
+        frame = GameFrame(self, self.settings, mode, difficulty, user_id=user_id)
 
         self.switch_frame(frame)
 

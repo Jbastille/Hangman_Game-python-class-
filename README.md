@@ -115,13 +115,11 @@ Pillow
 Pygame
 
 🚀 Future Improvements
-High score system
 
 Animated hangman graphics
 
 Custom category editor
 
-database storage.
 
 📜 License
 This project is open for personal or educational use.

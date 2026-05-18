@@ -4,7 +4,6 @@ import tkinter as tk
 class DifficultyFrame(tk.Frame):
 
     def __init__(self, master, settings, mode):
-
         super().__init__(master)
 
         self.master = master
@@ -23,27 +22,21 @@ class DifficultyFrame(tk.Frame):
             bg=bg,
             fg=fg
         )
-
         title.pack(pady=30)
 
-        difficulties = [
-            "easy",
-            "medium",
-            "hard"
-        ]
+        difficulties = ["easy", "medium", "hard"]
 
         for difficulty in difficulties:
-
             tk.Button(
                 self,
                 text=difficulty.capitalize(),
                 font=("Arial", 18),
                 width=20,
                 height=2,
-                command=lambda d=difficulty:
-                    self.start_game(d)
+                command=lambda d=difficulty: self.start_game(d)
             ).pack(pady=10)
 
+        # Back button only – no Leaderboard
         tk.Button(
             self,
             text="Back",
@@ -52,14 +45,6 @@ class DifficultyFrame(tk.Frame):
             command=self.master.show_categories
         ).pack(pady=25)
 
-    # ---------------------------------------------------------
-    # START GAME
-    # ---------------------------------------------------------
     def start_game(self, difficulty):
-
         self.mode.load_words(difficulty)
-
-        self.master.start_game(
-            self.mode,
-            difficulty
-        )
+        self.master.start_game(self.mode, difficulty, user_id=self.master.user_id)
