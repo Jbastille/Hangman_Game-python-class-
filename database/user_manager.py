@@ -14,6 +14,10 @@ class UserManager:
             salt = os.urandom(32)
         key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
         return salt + key   # store salt + hash together
+        # hashlib the library that have the functions
+        # pbkdf2 loop 100 000 (protocol)
+        # hmac mix salt and password
+        # sha256 the how hmac mix (logic gates)
 
     @staticmethod
     def verify_password(stored: bytes, provided_password: str) -> bool:
